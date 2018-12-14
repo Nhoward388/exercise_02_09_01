@@ -1,8 +1,19 @@
+<?php
+    session_start();
+    $_SESSION = array();
+    session_destroy();
+?>
 <!doctype html>
 
 <html>
 
 <head>
+<!--
+   exercise_02_09_01
+   Author: Nathan Howard
+   Date: 11.15.18
+   filename: internlogin.php
+-->
     <title>College Internships</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0">
@@ -14,7 +25,7 @@
     <h2>Register / Login</h2>
     <p>New Interns, please complete the top form to register as a user. Returning interns, please complete the 2nd form to login.</p>
     <h3>New Intern Registration</h3>
-    <form action="RegisterIntern.php" method="post">
+    <form action="RegisterIntern.php?PHPSESSID=<?php echo session_id(); ?>" method="post">
         <p>
            Enter your name:
             <input type="text" name="first">
@@ -37,7 +48,7 @@
         <input type="submit" name="register" value="Register">
     </form>
     <h3>Returning Intern Login</h3>
-    <form action="VerifyLogin.php" method="post">
+    <form action="VerifyLogin.php?PHPSESSID=<?php echo session_id(); ?>" method="post">
         <p>
             Enter your e-mail address:
             <input type="text" name="email">
